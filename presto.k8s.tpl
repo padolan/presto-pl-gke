@@ -1,5 +1,10 @@
-# may not work atm, just getting a basic app out there
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: presto 
+---
+# may not work atm, just getting a basic app out there
 apiVersion: apps/v1
 kind: Deployment
 metadata:
