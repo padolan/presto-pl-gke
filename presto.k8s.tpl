@@ -1,9 +1,10 @@
-# won't work atm, just getting a basic app out there
+# may not work atm, just getting a basic app out there
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: presto
+  namespace: presto
   labels:
     app: presto
 spec:
@@ -26,6 +27,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: presto
+  namespace: presto
 spec:
   selector:
     app: presto 

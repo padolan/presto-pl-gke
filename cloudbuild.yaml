@@ -5,12 +5,12 @@ steps:
 # This step builds the container image.
 - name: 'gcr.io/cloud-builders/docker'
   id: Build
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/padolan/presto:$SHORT_SHA', '-f', './presto/Dockerfile', './presto' ]
+  args: [ 'build', '-t', 'gcr.io/padolan/$PROJECT_ID/presto:$SHORT_SHA', '-f', './presto/Dockerfile', './presto' ]
 
 # This step pushes the image to gcr 
 - name: 'gcr.io/cloud-builders/docker'
   id: Push
-  args: [ 'push', 'gcr.io/$PROJECT_ID/padolan/presto:$SHORT_SHA' ]
+  args: [ 'push', 'gcr.io/padolan/$PROJECT_ID/presto:$SHORT_SHA' ]
 
 # This step generates the new manifest
 - name: 'gcr.io/cloud-builders/gcloud'
@@ -19,7 +19,7 @@ steps:
   args:
   - '-c'
   - |
-     sed "s/PRESTO_IMAGE_URL/gcr.io\/$PROJECT_ID\/padolan\/presto:$SHORT_SHA/g" presto.k8s.tpl > k8s.yml 
+     sed "s/PRESTO_IMAGE_URL/gcr.io\/padolan\/$PROJECT_ID\/presto:$SHORT_SHA/g" presto.k8s.tpl > k8s.yml 
 
 # deploy image to GKE
 - name: "gcr.io/cloud-builders/gke-deploy"
@@ -31,4 +31,4 @@ steps:
   - --cluster=cluster-1
 
 images:
-- 'gcr.io/$PROJECT_ID/padolan/presto'
+- 'gcr.io/padolan/$PROJECT_ID/presto'
