@@ -39,4 +39,17 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8080 
+      targetPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: presto
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: presto
+          servicePort: 80
