@@ -45,6 +45,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: presto
+  namespace: presto
 spec:
   rules:
   - http:
