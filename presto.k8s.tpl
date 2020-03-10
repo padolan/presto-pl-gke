@@ -34,6 +34,7 @@ metadata:
   name: presto
   namespace: presto
 spec:
+  type: LoadBalancer
   selector:
     app: presto 
   ports:
@@ -47,7 +48,6 @@ metadata:
   name: presto
   namespace: presto
 spec:
-  type: LoadBalancer
   rules:
   - http:
       paths:
