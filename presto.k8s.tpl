@@ -1,5 +1,10 @@
 ---
 apiVersion: v1
+kind: Namespace
+metadata:
+  name: presto 
+---
+apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: mysql-pv-volume
@@ -18,6 +23,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
+  namespace: presto
 spec:
   storageClassName: manual
   accessModes:
@@ -25,11 +31,6 @@ spec:
   resources:
     requests:
       storage: 2Gi
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: presto 
 ---
 # may not work atm, just getting a basic app out there
 apiVersion: apps/v1
@@ -87,6 +88,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql
+  namespace: presto
 spec:
   ports:
   - port: 3306
@@ -98,6 +100,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
+  namespace: presto
 spec:
   selector:
     matchLabels:
