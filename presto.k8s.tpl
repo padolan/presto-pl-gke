@@ -54,6 +54,18 @@ spec:
         image: PRESTO_IMAGE_URL 
         ports:
         - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /ui
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 5 
+        readinessProbe:
+          httpGet:
+            path: /ui
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 5 
 ---
 apiVersion: v1
 kind: Service
