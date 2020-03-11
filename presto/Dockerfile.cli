@@ -10,6 +10,7 @@ RUN yum -y install java-11-openjdk less && \
     echo OK
 
 COPY ./installdir /installdir
+COPY ./presto-smoketest.sh /usr/local/bin/presto-smoketest.sh 
 
 RUN set -xeu && \
     dist="$(/installdir/find-dist-location.sh "${dist_location}" "${presto_version}")" && \
@@ -28,4 +29,4 @@ RUN set -xeu && \
 
 COPY etc /usr/lib/presto/etc
 
-CMD /usr/local/bin/presto-cli
+CMD /usr/local/bin/presto-smoketest.sh
