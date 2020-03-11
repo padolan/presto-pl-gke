@@ -58,13 +58,13 @@ spec:
           httpGet:
             path: /ui
             port: 8080
-          initialDelaySeconds: 30
-          periodSeconds: 5 
+          initialDelaySeconds: 45 
+          periodSeconds: 15 
         readinessProbe:
           httpGet:
             path: /ui
             port: 8080
-          initialDelaySeconds: 30
+          initialDelaySeconds: 90
           periodSeconds: 5 
 ---
 apiVersion: v1
