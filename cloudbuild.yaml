@@ -2,22 +2,22 @@ steps:
 
 # Build presto container image
 - name: 'gcr.io/cloud-builders/docker'
-  id: Build
+  id: Build Presto
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/presto:$SHORT_SHA', '-f', './presto/Dockerfile', './presto' ]
 
 # Push presto image to gcr 
 - name: 'gcr.io/cloud-builders/docker'
-  id: Push
+  id: Push Presto
   args: [ 'push', 'gcr.io/$PROJECT_ID/presto:$SHORT_SHA' ]
 
 # Builds the presto cli 
 - name: 'gcr.io/cloud-builders/docker'
-  id: Build
+  id: Build CLI
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/presto-cli:$SHORT_SHA', '-f', './presto/Dockerfile.cli', './presto' ]
 
 # Push the cli image to gcr 
 - name: 'gcr.io/cloud-builders/docker'
-  id: Push
+  id: Push CLI
   args: [ 'push', 'gcr.io/$PROJECT_ID/presto-cli:$SHORT_SHA' ]
 
 # Generate the manifests
