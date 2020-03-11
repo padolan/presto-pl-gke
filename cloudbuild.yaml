@@ -44,7 +44,7 @@ steps:
   args:
   - run
   - -e
-  - server=35.238.175.52
+  - server=presto.presto:80
   - gcr.io/$PROJECT_ID/presto-cli:$SHORT_SHA
 
 #- name: "gcr.io/cloud-builders/kubectl"
