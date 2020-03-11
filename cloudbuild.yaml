@@ -30,5 +30,17 @@ steps:
   - --location=us-central1-c
   - --cluster=cluster-1
 
+# validate the deployment
+#kubectl exec -it -n=presto presto-7dbf7c7c88-t4wbr -- presto-cli --execute "select * from mysql.information_schema.columns"
+- name: "gcr.io/cloud-builders/kubectl"
+  id: Validate
+  args:
+  - get
+  - po
+  - -n=presto
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
+
 images:
 - 'gcr.io/$PROJECT_ID/presto'
