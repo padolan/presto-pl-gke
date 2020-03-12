@@ -3,22 +3,22 @@ steps:
 # Build presto container image
 - name: 'gcr.io/cloud-builders/docker'
   id: Build Presto
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/presto:$SHORT_SHA', '--build-arg', 'presto_version=${_PRESTO_VERSION}', '-f', 'presto/Dockerfile', './' ]
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/presto:${_RELEASE_VERSION}', '--build-arg', 'presto_version=${_PRESTO_VERSION}', '-f', 'presto/Dockerfile', './' ]
 
 # Push presto image to gcr 
 - name: 'gcr.io/cloud-builders/docker'
   id: Push Presto
-  args: [ 'push', 'gcr.io/$PROJECT_ID/presto:$SHORT_SHA' ]
+  args: [ 'push', 'gcr.io/$PROJECT_ID/presto:${_RELEASE_VERSION}' ]
 
 # Builds the presto cli 
 - name: 'gcr.io/cloud-builders/docker'
   id: Build CLI
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/presto-cli:$SHORT_SHA', '-f', 'presto-cli/Dockerfile', './' ]
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/presto-cli:${_RELEASE_VERSION}', '-f', 'presto-cli/Dockerfile', './' ]
 
 # Push the cli image to gcr 
 - name: 'gcr.io/cloud-builders/docker'
   id: Push CLI
-  args: [ 'push', 'gcr.io/$PROJECT_ID/presto-cli:$SHORT_SHA' ]
+  args: [ 'push', 'gcr.io/$PROJECT_ID/presto-cli:${_RELEASE_VERSION}' ]
 
 # Generate the manifests
 - name: 'gcr.io/cloud-builders/gcloud'
@@ -27,7 +27,7 @@ steps:
   args:
   - '-c'
   - |
-     sed "s/PRESTO_IMAGE_URL/gcr.io\/$PROJECT_ID\/presto:$SHORT_SHA/g" presto-common/manifests.k8s.tpl > _k8s.yml 
+     sed "s/PRESTO_IMAGE_URL/gcr.io\/$PROJECT_ID\/presto:${_RELEASE_VERSION}/g" presto-common/manifests.k8s.tpl > _k8s.yml 
 
 # Deploy the manifests 
 - name: "gcr.io/cloud-builders/gke-deploy"
@@ -45,10 +45,11 @@ steps:
   - run
   - -e
   - server=35.238.175.52:80
-  - gcr.io/$PROJECT_ID/presto-cli:$SHORT_SHA
+  - gcr.io/$PROJECT_ID/presto-cli:${_RELEASE_VERSION}
 
 substitutions:
     _PRESTO_VERSION: 323-e.4 
+    _RELEASE_VERSION: $SHORT_SHA 
 
 images:
 - 'gcr.io/$PROJECT_ID/presto'
