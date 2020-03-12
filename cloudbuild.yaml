@@ -48,7 +48,7 @@ steps:
   - gcr.io/$PROJECT_ID/presto-cli:${SHORT_SHA}
 
 substitutions:
-    _PRESTO_VERSION: 323-e.3
+    _PRESTO_VERSION: 323-e.4
 
 images:
 - 'gcr.io/$PROJECT_ID/presto'
