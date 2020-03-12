@@ -3,7 +3,7 @@ steps:
 # Build presto container image
 - name: 'gcr.io/cloud-builders/docker'
   id: Build Presto
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/presto:$SHORT_SHA', './presto' ]
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/presto:$SHORT_SHA', '--build-arg', 'presto_version=${_PRESTO_VERSION}', './presto' ]
 
 # Push presto image to gcr 
 - name: 'gcr.io/cloud-builders/docker'
@@ -47,15 +47,8 @@ steps:
   - server=35.238.175.52:80
   - gcr.io/$PROJECT_ID/presto-cli:$SHORT_SHA
 
-#- name: "gcr.io/cloud-builders/kubectl"
-#  id: Validate
-#  args:
-#  - get
-#  - po
-#  - -n=presto
-#  env:
-#  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
-#  - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
+substitutions:
+    _PRESTO_VERSION: 323-e.4 
 
 images:
 - 'gcr.io/$PROJECT_ID/presto'
