@@ -9,7 +9,7 @@ RUN yum -y install java-11-openjdk less && \
     rm -rf /var/cache/yum && \
     echo OK
 
-COPY ./installdir /installdir
+COPY find-dist-location.sh /installdir/find-dist-location.sh
 COPY ./presto-smoketest.sh /usr/local/bin/presto-smoketest.sh 
 
 RUN set -xeu && \
