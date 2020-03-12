@@ -27,14 +27,14 @@ steps:
   args:
   - '-c'
   - |
-     sed "s/PRESTO_IMAGE_URL/gcr.io\/$PROJECT_ID\/presto:$SHORT_SHA/g" presto.k8s.tpl > k8s.yml 
+     sed "s/PRESTO_IMAGE_URL/gcr.io\/$PROJECT_ID\/presto:$SHORT_SHA/g" presto-common/manifests.k8s.tpl > _k8s.yml 
 
 # Deploy the manifests 
 - name: "gcr.io/cloud-builders/gke-deploy"
   id: Deploy
   args:
   - run
-  - --filename=k8s.yml
+  - --filename=_k8s.yml
   - --location=us-central1-c
   - --cluster=cluster-1
 
