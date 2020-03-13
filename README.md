@@ -58,6 +58,23 @@ Git Commit +---->+  trigger +--->+ Build &    +--->+   Build &   +--->+  Apply k
 ```
 ### Component Details
 
+#### Presto Container
+Container of focus.  Dockerfile comes from the [presto images repo](https://github.com/starburstdata/docker-images/tree/master/presto).
+When this container is built, it is uploaded to gcr.io with a version matching the commit sha, ensuring
+changes are recorded in sync with the git repo.
+
+**Connectors**
+
+The presto docker container is started with following connectors:
+* tpch
+* tpcds
+* memory
+* blackhole
+* jmx
+* system
+
+On top of this, a mysql connector is added for basic validation purposes.
+
 #### MySql Container
 A separate mysql container is installed alongside presto, used as part of the install validation. 
 
@@ -68,18 +85,26 @@ docker container which contains tools and tests necessary for validating the tar
 that consists of:
 - jvm + presto-cli
 - simple bundled test script
- 
-#### Presto connectors
+The smoke test cli is optimized a bit from the [source repo](https://github.com/starburstdata/docker-images/], 
+only containing the jvm and cli jar.
 
-Presto docker container is started with following connectors:
-* tpch
-* tpcds
-* memory
-* blackhole
-* jmx
-* system
+## Resources
+[Kubernetes docs](https://kubernetes.io/)
+[Google Cloud Build Quickstart: Build](https://cloud.google.com/cloud-build/docs/quickstart-build)
+[Google Cloud Build Quickstart: Deploy](https://cloud.google.com/cloud-build/docs/quickstart-deploy)
+[Google Cloud Build: Deploying to GKE](https://cloud.google.com/cloud-build/docs/deploying-builds/deploy-gke)
+[Presto Mysql Connector](https://prestodb.io/docs/current/connector/mysql.html)
+[Presto on Kubernetes](https://docs.starburstdata.com/latest/kubernetes.html)
+[Presto CLI](https://docs.starburstdata.com/latest/installation/cli.html)
 
-On top of this, a mysql connector is added for basic validation purposes.
+## Time Breakdown by component
+2h: Setup (GKE and Google Cloud Build Project setup, fork of Presto repo, local presto docker build testing)
+1h: Formulation of basic GCB pipeline: github integration, docker build, gcr upload
+1h: Kubernetes manifest formulation & application in GCB + GKE, GKE service ingress setup
+1h: Setup of mysql, research & creation of smoke test scripts
+1h: Setup of pipeline cli
+1h: Research on other enhancements (slack notifications, dynamic version inputs)
+2h: Solution documentation
 
 ## OpenJDK license
 
