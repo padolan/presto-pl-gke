@@ -108,5 +108,5 @@ only containing the jvm and cli jar.
 
 ## OpenJDK license
 
-By using this image, you accept the OpenJDK License Agreement for Java SE available here:
+By using this project, you accept the OpenJDK License Agreement for Java SE available here:
 [https://openjdk.java.net/legal/gplv2+ce.html](https://openjdk.java.net/legal/gplv2+ce.html)
