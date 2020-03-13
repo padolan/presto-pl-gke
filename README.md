@@ -96,17 +96,16 @@ only containing the jvm and cli jar.
 ## Resources
 [Kubernetes docs](https://kubernetes.io/)
 
-[Google Cloud Build Quickstart: Build](https://cloud.google.com/cloud-build/docs/quickstart-build)
+Google Cloud Build Resources
+- [Quickstart: Build](https://cloud.google.com/cloud-build/docs/quickstart-build)
+- [Quickstart: Deploy](https://cloud.google.com/cloud-build/docs/quickstart-deploy)
+- [Deploying to GKE](https://cloud.google.com/cloud-build/docs/deploying-builds/deploy-gke)
+- [Cloud Builders](https://github.com/GoogleCloudPlatform/cloud-builders)
 
-[Google Cloud Build Quickstart: Deploy](https://cloud.google.com/cloud-build/docs/quickstart-deploy)
-
-[Google Cloud Build: Deploying to GKE](https://cloud.google.com/cloud-build/docs/deploying-builds/deploy-gke)
-
-[Presto Mysql Connector](https://prestodb.io/docs/current/connector/mysql.html)
-
-[Presto on Kubernetes](https://docs.starburstdata.com/latest/kubernetes.html)
-
-[Presto CLI](https://docs.starburstdata.com/latest/installation/cli.html)
+Presto
+- [Mysql Connector](https://prestodb.io/docs/current/connector/mysql.html)
+- [Running on Kubernetes](https://docs.starburstdata.com/latest/kubernetes.html)
+- [CLI](https://docs.starburstdata.com/latest/installation/cli.html)
 
 ## OpenJDK license
 
