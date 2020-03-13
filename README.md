@@ -82,13 +82,13 @@ only containing the jvm and cli jar.
 
 
 ## Time Breakdown
-2h: Setup (GKE and Google Cloud Build Project setup, fork of Presto repo, local presto docker build testing)
-1h: Formulation of basic GCB pipeline: github integration, docker build, gcr upload
-1h: Kubernetes manifest formulation & application in GCB + GKE, GKE service ingress setup
-1h: Setup of mysql, research & creation of smoke test scripts
-1h: Setup of pipeline cli
-1h: Research on other enhancements (slack notifications, dynamic version inputs)
-2h: Solution documentation
+- 2h: Setup (GKE and Google Cloud Build Project setup, fork of Presto repo, local presto docker build testing)
+- 1h: Formulation of basic GCB pipeline: github integration, docker build, gcr upload
+- 1h: Kubernetes manifest formulation & application in GCB + GKE, GKE service ingress setup
+- 1h: Setup of mysql, research & creation of smoke test scripts
+- 1h: Setup of pipeline cli
+- 1h: Research on other enhancements (slack notifications, dynamic version inputs)
+- 2h: Solution documentation
 
 ## Resources
 [Kubernetes docs](https://kubernetes.io/)
