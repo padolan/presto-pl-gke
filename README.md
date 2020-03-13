@@ -77,7 +77,7 @@ docker container which contains tools and tests necessary for validating the tar
 that consists of:
 - jvm + presto-cli
 - simple bundled test script
-The smoke test cli is optimized a bit from the [source repo](https://github.com/starburstdata/docker-images/], 
+The smoke test cli is optimized a bit from the [source repo](https://github.com/starburstdata/docker-images/), 
 only containing the jvm and cli jar.
 
 
