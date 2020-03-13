@@ -6,15 +6,18 @@ Builds and Deploys Presto Docker image to [GKE](https://cloud.google.com/kuberne
 
 - Commit access to this repo is required to run the `pipeline.sh` script.  
 - You may require additional access privileges to view the Google Cloud Build pipeline.
+- MacOS
 
 ## Usage
 
 This setup utilizes a basic [GitOps](https://www.gitops.tech/) approach.  
 
 The pipeline may either be triggered with a commit to the repo, or by running
-the pipeline script:
+the provided pipeline script.
 
 ```shell
+git clone https://github.com/padolan/presto-pl-gke.git
+cd presto-pl-gke
 ./pipeline.sh
 ``` 
 
