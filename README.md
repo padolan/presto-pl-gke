@@ -25,14 +25,6 @@ the [host GKE cluster](http://35.238.175.52/ui/).
 
 ## Background
 
-x a. Short walkthrough the architecture of the solution
-x b. The files / components and their responsibilities
-x c. Usage docs
-d. External resources (blogs, websites, etc) you read when coming up with a
-solution to this exercise
-e. List of third-party services/tools used by the solution
-f. Time spent on assignment, can break down into problem areas.
-
 ### Architecture
 
 The pipeline consists of:
@@ -88,6 +80,16 @@ that consists of:
 The smoke test cli is optimized a bit from the [source repo](https://github.com/starburstdata/docker-images/], 
 only containing the jvm and cli jar.
 
+
+## Time Breakdown
+2h: Setup (GKE and Google Cloud Build Project setup, fork of Presto repo, local presto docker build testing)
+1h: Formulation of basic GCB pipeline: github integration, docker build, gcr upload
+1h: Kubernetes manifest formulation & application in GCB + GKE, GKE service ingress setup
+1h: Setup of mysql, research & creation of smoke test scripts
+1h: Setup of pipeline cli
+1h: Research on other enhancements (slack notifications, dynamic version inputs)
+2h: Solution documentation
+
 ## Resources
 [Kubernetes docs](https://kubernetes.io/)
 [Google Cloud Build Quickstart: Build](https://cloud.google.com/cloud-build/docs/quickstart-build)
@@ -96,15 +98,6 @@ only containing the jvm and cli jar.
 [Presto Mysql Connector](https://prestodb.io/docs/current/connector/mysql.html)
 [Presto on Kubernetes](https://docs.starburstdata.com/latest/kubernetes.html)
 [Presto CLI](https://docs.starburstdata.com/latest/installation/cli.html)
-
-## Time Breakdown by component
-2h: Setup (GKE and Google Cloud Build Project setup, fork of Presto repo, local presto docker build testing)
-1h: Formulation of basic GCB pipeline: github integration, docker build, gcr upload
-1h: Kubernetes manifest formulation & application in GCB + GKE, GKE service ingress setup
-1h: Setup of mysql, research & creation of smoke test scripts
-1h: Setup of pipeline cli
-1h: Research on other enhancements (slack notifications, dynamic version inputs)
-2h: Solution documentation
 
 ## OpenJDK license
 
