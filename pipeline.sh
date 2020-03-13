@@ -21,13 +21,30 @@ function log {
 
 function doPrompt {
   clear
-  banner -w 30 presto
-  echo ". . . . . . . . . . . . . . . . . ."
-  echo -e "This pipeline:"
-  echo -e "- builds the specified presto version and uploads to GCR"
-  echo -e "- deploys the newly built container to GKE"
-  echo -e "- runs a bit of post-deploy validation on the deployed container"
-  echo ". . . . . . . . . . . . . . . . . ."
+  cat << EOF 
+                                         .o8             
+oo.ooooo.  oooo d8b  .ooooo.   .oooo.o .o888oo  .ooooo.  
+ 888' '88b '888""8P d88' '88b d88(  "8   888   d88' '88b 
+ 888   888  888     888ooo888 '"Y88b.    888   888   888 
+ 888   888  888     888    .o o.  )88b   888 . 888   888 
+ 888bod8P' d888b    'Y8bod8P' 8""888P'   "888" 'Y8bod8P' 
+ 888                                                     
+o888o 
+
++-------+      +--------+      +----------+
+|       |      |        |      |          |
+| Build +----->+ Deploy +----->+ Validate |
+|       |      |        |      |          |
++-------+      +--------+      +----------+
+
+. . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . .
+This pipeline:
+- builds the specified presto version and uploads to GCR
+- deploys the newly built container to GKE
+- runs a bit of post-deploy validation on the deployed container
+. . . . . . . . . . . . . . . . . .
+EOF
   echo -e "${YELLOW}Please specify the presto version to initiate the pipeline (${DEF_VERSION}):${NC}" 
   read prestoVersion 
 }
